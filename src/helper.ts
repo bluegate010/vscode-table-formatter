@@ -226,7 +226,7 @@ export class TableHelper {
                 // | で分割
                 if (text.indexOf('|') != -1) {
                     // 末尾の空白も含めるため -1
-                    cells = text.split("|", -1);
+                    cells = text.split(/(?<!\\)\|/);  // Don't split on escaped pipe characters.
                     delimiter = DelimiterType.Pipe;
                 }
                 // なければ + で分ける
